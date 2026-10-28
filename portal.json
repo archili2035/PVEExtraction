@@ -1,0 +1,14 @@
+{
+  "title": "PVE 搜打撤研究",
+  "summary": "维多利亚 + 科幻侦探二次元 IP 的搜打撤玩法研究笔记（题材/枪械/竞品）",
+  "category": "游戏项目",
+  "visibility": "private",
+  "site": "docs",
+  "entry": "pveextraction_index.html",
+  "include": [
+    "docs/**"
+  ],
+  "exclude": [],
+  "theme_version": "0.2.0",
+  "theme_dir": "docs/assets/theme"
+}
