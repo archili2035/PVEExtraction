@@ -6,6 +6,13 @@
 <title>TPS 分析 · PVE 搜打撤研究</title>
 <link rel="stylesheet" href="../assets/theme/tokens.css">
 <link rel="stylesheet" href="../assets/theme/base.css">
+<style>
+  .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  @media (max-width: 734px) { .cmp { grid-template-columns: 1fr; } }
+  .cmp .card span { margin-top: var(--space-3); display: block; }
+  .cmp .card ul { padding-left: 1.2em; }
+  .cmp .card li { font-size: var(--text-small); color: var(--ink-secondary); }
+</style>
 </head>
 <body>
 
@@ -14,112 +21,146 @@
     <header class="hero">
       <span class="tag">玩法框架</span>
       <h1>TPS 分析</h1>
-      <p class="lead">TPS 与 FPS 的本质区别、视角（腰射/肩射/FPP）与表现，供搜打撤射击玩法参考。</p>
+      <p class="lead">TPS 与 FPS 的本质区别、视角（腰射 / 肩射 / FPP）与表现，供搜打撤射击玩法参考。</p>
     </header>
   </div>
 </section>
 
 <section class="band band-alt band-tight">
   <div class="page">
-    <h2>TPS与FPS的本质区别</h2>
+    <h2>TPS 与 FPS 的本质区别</h2>
     <ul>
-    <li>镜头位置的区别</li>
-    <li>进而视野大小、关卡尺寸、动画特效等一系列具体的感观区别</li>
-    <li>从而带来大量的做法上的差异</li>
+      <li>镜头位置的区别</li>
+      <li>进而视野大小、关卡尺寸、动画特效等一系列具体的感观区别</li>
+      <li>从而带来大量的做法上的差异</li>
     </ul>
+  </div>
+</section>
+
+<section class="band">
+  <div class="page">
     <h2>视角</h2>
-    <ul>
-    <li>TPP（Third Person Perspective）</li>
-    <li>TPP腰射</li>
-    <li>TPP肩射（OTS：Over-the-Shoulder 越肩视角瞄准）</li>
-    <li>FPP（First Person Perspective）</li>
-    </ul>
-    <p><strong>关键设计：TPP与FPP之间的切换</strong></p>
-    <ul>
-    <li>向前推进镜头，某一帧切换FPP</li>
-    </ul>
+    <div class="grid">
+      <div class="card">
+        <strong>TPP</strong>
+        <span>Third Person Perspective（第三人称）</span>
+        <span><em>TPP 腰射</em></span>
+        <span><em>TPP 肩射（OTS：Over-the-Shoulder 越肩视角瞄准）</em></span>
+      </div>
+      <div class="card">
+        <strong>FPP</strong>
+        <span>First Person Perspective（第一人称）</span>
+      </div>
+    </div>
+
+    <div class="alert" style="margin-top: var(--space-5)">
+      <h4>关键设计：TPP 与 FPP 之间的切换</h4>
+      <p>向前推进镜头，某一帧切换 FPP。</p>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt">
+  <div class="page">
     <h2>表现</h2>
-    <h3>TPP腰射</h3>
-    <ul>
-    <li>武器动画（抖动）与镜头抖动</li>
-    <li>动作与射击的结合</li>
-    </ul>
-    <h3>TPP肩射</h3>
-    <ul>
-    <li>拉近镜头</li>
-    <li>增加角色与枪械在镜头中的比例</li>
-    <li>让出视野中心给予射击目标</li>
-    <li>避免瞬切</li>
-    <li>对武器动画、角色动画、特效有更高要求</li>
-    <li>移动与射击状态切换的频率</li>
-    <li>从关卡、怪物、战斗节奏上需要避免过频繁地切换</li>
-    <li>移动与射击都可以保持较长的持续周期（遗迹2的节奏挺舒适）</li>
-    </ul>
-    <h3>FPP</h3>
-    <ul>
-    <li>同FPS</li>
-    </ul>
-    <p>需要设计游戏不同射击的比例，从而确定资源投入重心。</p>
-    <p>以遗迹2为例，取消了TPP腰射，点击射击自动切换到肩射模式。</p>
-    <h3>TPP与FPP的表现差异</h3>
-    <h4>FPP</h4>
-    <ul>
-    <li>关注武器本身的表现，至多增加弹出子弹与手部动画</li>
-    <li>枪械击发时，武器本身结构变化以及反作用到镜头的变化</li>
-    </ul>
-    <h4>TPP</h4>
-    <ul>
-    <li>核心参数：武器占屏幕的像素比</li>
-    <li>TPP腰射武器占屏幕的像素比：</li>
-    <li>TPP肩射武器占屏幕的像素比：</li>
-    <li>枪械操作时：</li>
-    <li>武器本身结构变化占比变小</li>
-    <li>后座力作用到镜头效果变弱</li>
-    <li>需要重点强调后座力作用到角色模型的动画</li>
-    <li>枪械相关的动作，需要结合视角、突出角色原则重新设计</li>
-    <li>强化以下特效：<ul>
-    <li>开火特效</li>
-    <li>弹道线</li>
-    <li>命中特效</li>
-    </ul>
-    </li>
-    <li>纯写实的中规中矩的武器效果，可能天生不适配TPS游戏</li>
-    <li>镜头跟随</li>
-    <li>绑定程度</li>
-    </ul>
-    <h3>关卡</h3>
-    <ul>
-    <li>关卡尺寸：</li>
-    <li>等比放大</li>
-    <li>会带来比例认识偏差，因此更多偏向于室外开阔场景，或大型室内空间</li>
-    <li>因此题材上非绝对写实会更加适配</li>
-    </ul>
-    <h3>其他问题</h3>
-    <ul>
-    <li>枪口出的枪线，与镜头到准心连线的夹角问题</li>
-    <li>遮挡标识</li>
-    <li>弹道偏转</li>
-    <li>作为PvP的视角，存在信息不对称的情况，不适宜作为竞技PvP主视角（PUBG的赛事也多采用FPP）</li>
-    <li>因此TPP下可能更多向娱乐化发展，而不是严肃竞技会好一些</li>
-    </ul>
-    <h3>总结</h3>
-    <ul>
-    <li>TPP = 射击 + 动作</li>
-    <li>需要同时做好枪械射击</li>
-    </ul>
+
+    <div class="section">
+      <h3>TPP 腰射</h3>
+      <ul>
+        <li>武器动画（抖动）与镜头抖动</li>
+        <li>动作与射击的结合</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>TPP 肩射</h3>
+      <ul>
+        <li>拉近镜头：增加角色与枪械在镜头中的比例、让出视野中心给予射击目标、避免瞬切。</li>
+        <li>对武器动画、角色动画、特效有更高要求。</li>
+        <li>移动与射击状态切换的频率：从关卡、怪物、战斗节奏上需要避免过频繁地切换；移动与射击都可以保持较长的持续周期（《遗迹 2》的节奏挺舒适）。</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>FPP</h3>
+      <p>同 FPS。</p>
+    </div>
+
+    <p class="note" style="margin-top: var(--space-4)">需要设计游戏不同射击的比例，从而确定资源投入重心。以《遗迹 2》为例，取消了 TPP 腰射，点击射击自动切换到肩射模式。</p>
+
+    <div class="section">
+      <h3>TPP 与 FPP 的表现差异</h3>
+      <div class="cmp">
+        <div class="card">
+          <strong>FPP</strong>
+          <span>
+            <ul>
+              <li>关注武器本身的表现，至多增加弹出子弹与手部动画</li>
+              <li>枪械击发时，武器本身结构变化以及反作用到镜头的变化</li>
+            </ul>
+          </span>
+        </div>
+        <div class="card">
+          <strong>TPP</strong>
+          <span>
+            <ul>
+              <li>核心参数：武器占屏幕的像素比（腰射 / 肩射各自不同）</li>
+              <li>枪械操作时：武器本身结构变化占比变小、后座力作用到镜头效果变弱</li>
+              <li>需重点强调后座力作用到角色模型的动画</li>
+              <li>枪械相关动作需结合视角、突出角色原则重新设计</li>
+              <li>强化开火特效、弹道线、命中特效</li>
+              <li>纯写实的中规中矩的武器效果，可能天生不适配 TPS 游戏</li>
+              <li>镜头跟随的绑定程度</li>
+            </ul>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="page">
+    <div class="section">
+      <h2>关卡</h2>
+      <ul>
+        <li>关卡尺寸等比放大，会带来比例认识偏差，因此更多偏向于室外开阔场景，或大型室内空间。</li>
+        <li>因此题材上非绝对写实会更加适配。</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>其他问题</h2>
+      <ul>
+        <li>枪口出的枪线，与镜头到准心连线的夹角问题：遮挡标识、弹道偏转。</li>
+        <li>作为 PvP 的视角，存在信息不对称的情况，不适宜作为竞技 PvP 主视角（PUBG 的赛事也多采用 FPP），因此 TPP 下可能更多向娱乐化发展，而不是严肃竞技会好一些。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band band-inverse band-tight">
+  <div class="page">
+    <span class="tag" style="color: var(--accent-line)">总结</span>
+    <h3 style="margin-top: var(--space-3)">TPP = 射击 + 动作</h3>
+    <p class="lead" style="color: var(--ink-on-inverse); opacity: 0.72">需要同时做好枪械射击。</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="page">
     <h2>参考作品</h2>
-    <ul>
-    <li>血猎：</li>
-    <li>全境封锁2全武器：https://youtu.be/FaAZPqJZuTg?si=jlPKtJQDy8fZiGsq</li>
-    <li>What Rifle Foregrip is Best? Angled? Vertical? Handstop?：https://youtu.be/Jc3q8TjJp0c?si=Xh_rfIZzuDgs3jME</li>
-    <li>T.REX ARMS：是美国田纳西的战术装备公司旗下媒体频道，目前订阅约 <strong>170 万</strong>，风格：<strong>偏理性工程派</strong>，不是单纯爽拍射击；喜欢做长期、量化测试，拆解装备设计逻辑，很重视 "平民自卫" 而不是竞技射击。视频质感精良，制作水平在油管战术频道里属于第一梯队。</li>
-    <li>OUTRIDERS - All Weapons [PC, 1440P]：https://youtu.be/qLoL1_h6UwQ?si=6za_NXaIuNPE45sw</li>
-    <li>【【WARFRAME/全B站最快最极限神速力高斯】速度的极致！！！神速力！！！】 https://www.bilibili.com/video/BV1dK411c7Bx/?share_source=copy_web&amp;vd_source=9f961463c9a01b757af4c797623b7a52</li>
-    <li>Firing All guns in Red Dead Redemption 2 (1st and 3rd person RDR2)：https://youtu.be/4vNDLbBHRKo?si=sSBsgumRlPuyyT-q</li>
-    <li>Grand Theft Auto 5 - All Weapons in 3rd Person: https://youtu.be/UlzU3CEU9uk?si=Zt8kRY5iXdUKriKn</li>
-    <li>Death Stranding - All Weapons &amp; Equipment Showcase：https://youtu.be/_b4KFrsT2kM?si=sS9kz4kv9pubPbDO</li>
-    <li>All Returnal Guns Ranked <em>One Weapon Is BY FAR The Best</em>：https://youtu.be/r6M70-3gjus?si=alAYTsNgn8SfGzUE</li>
-    </ul>
+    <div class="links" style="margin-top: var(--space-4)">
+      <a href="https://youtu.be/FaAZPqJZuTg?si=jlPKtJQDy8fZiGsq">全境封锁 2 全武器</a>
+      <a href="https://youtu.be/Jc3q8TjJp0c?si=Xh_rfIZzuDgs3jME">T.REX ARMS · 护木对比</a>
+      <a href="https://youtu.be/qLoL1_h6UwQ?si=6za_NXaIuNPE45sw">OUTRIDERS 全武器</a>
+      <a href="https://www.bilibili.com/video/BV1dK411c7Bx/">WARFRAME · 高斯</a>
+      <a href="https://youtu.be/4vNDLbBHRKo?si=sSBsgumRlPuyyT-q">RDR2 全枪械</a>
+      <a href="https://youtu.be/UlzU3CEU9uk?si=Zt8kRY5iXdUKriKn">GTA5 第三人称全武器</a>
+      <a href="https://youtu.be/_b4KFrsT2kM?si=sS9kz4kv9pubPbDO">死亡搁浅 · 武器展示</a>
+      <a href="https://youtu.be/r6M70-3gjus?si=alAYTsNgn8SfGzUE">Returnal 全枪械排名</a>
+    </div>
+    <p class="note" style="margin-top: var(--space-4)">T.REX ARMS：美国田纳西战术装备公司旗下媒体频道，订阅约 170 万，偏理性工程派，重视平民自卫，制作水准属油管战术频道第一梯队。</p>
   </div>
 </section>
 
